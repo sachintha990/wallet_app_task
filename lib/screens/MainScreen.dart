@@ -52,6 +52,7 @@ class _MainscreenState extends State<Mainscreen> {
                 ),
                 semanticsLabel: 'My SVG Image',
               ),
+              label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -66,6 +67,7 @@ class _MainscreenState extends State<Mainscreen> {
                 height: 25,
                 width: 25,
               ),
+              label: 'Wallet',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -78,6 +80,7 @@ class _MainscreenState extends State<Mainscreen> {
                 ),
                 semanticsLabel: 'My SVG Image',
               ),
+              label: 'Profile',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -90,6 +93,7 @@ class _MainscreenState extends State<Mainscreen> {
                 ),
                 semanticsLabel: 'My SVG Image',
               ),
+              label: 'Settings',
             ),
           ],
           currentIndex: _selectedIndex,
