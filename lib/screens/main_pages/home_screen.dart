@@ -9,6 +9,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String selectedCurrency = 'LKR';
+
+  final List<String> currencies = ['LKR', 'USD', 'EUR', 'INR'];
+  final Map<String, String> currencyFlags = {
+    'LKR': 'assets/images/LKR.png',
+    'USD': 'assets/images/USD.png',
+    'EUR': 'assets/images/EUR.png',
+    'INR': 'assets/images/INR.png',
+  };
+
+  final balance = '1,234.00';
   final name = 'Ehi';
   @override
   Widget build(BuildContext context) {
@@ -21,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(
             color: AppColors.primaryGrey,
             fontSize: 20,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w400,
           ),
         ),
         actions: [
@@ -32,8 +43,51 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: const Center(
-        child: Text('Home Screen'),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              balance,
+              style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.primaryBlack),
+            ),
+            DropdownButton<String>(
+                value: selectedCurrency,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black,
+                ),
+                underline: Container(),
+                items: currencies.map((String currency) {
+                  return DropdownMenuItem<String>(
+                    value: currency,
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(30),
+                          child: Image.asset(
+                            currencyFlags[currency]!,
+                            width: 20,
+                            height: 20,
+                          ),
+                        ),
+                        Text(currency)
+                      ],
+                    ),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedCurrency = newValue!;
+                  });
+                })
+          ],
+        ),
       ),
     );
   }
