@@ -85,7 +85,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   setState(() {
                     selectedCurrency = newValue!;
                   });
-                })
+                }),
+            const SizedBox(height: 20),
+            const Text(
+              'Here are some things you can do',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: AppColors.primaryGrey,
+              ),
+            ),
+            SizedBox(height: 20),
           ],
         ),
       ),
