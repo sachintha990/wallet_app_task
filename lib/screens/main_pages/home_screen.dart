@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_app_task/data/featuer_card_data.dart';
 import 'package:wallet_app_task/utils/colors.dart';
+import 'package:wallet_app_task/widgets/feature_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -96,6 +98,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(height: 20),
+            GridView.count(
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                children: List.generate(featureCardData.length, (index) {
+                  return FeatureCard(
+                    featureCardData: featureCardData[index],
+                    featureCardModel: null,
+                  );
+                })),
           ],
         ),
       ),
