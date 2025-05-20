@@ -13,7 +13,6 @@ class RouterClass {
           return const Mainscreen();
         },
       ),
-      
     ],
   );
 }
