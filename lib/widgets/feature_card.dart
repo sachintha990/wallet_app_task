@@ -12,6 +12,7 @@ class FeatureCard extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
+        // ignore: deprecated_member_use
         color: featureCardData.color.withOpacity(0.2),
         borderRadius: BorderRadius.circular(20),
       ),

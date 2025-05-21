@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              "${balance.toStringAsFixed(2)}",
+              balance.toStringAsFixed(2),
               style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -167,8 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       CircleAvatar(
                         radius: 40,
                         child: Icon(Icons.add,
-                            size: 50,
-                            color: AppColors.primaryBlack.withOpacity(0.5)),
+                            size: 50, color: AppColors.primaryBlack),
                       ),
                       const SizedBox(height: 10),
                       const Text(
