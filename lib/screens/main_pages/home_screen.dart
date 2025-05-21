@@ -19,8 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
   String selectedCurrency = 'LKR';
 
   double balance = 10000.00;
+
   final name = 'Ehi';
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              "$balance",
+              "${balance.toStringAsFixed(2)}",
               style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -103,9 +104,30 @@ class _HomeScreenState extends State<HomeScreen> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 children: List.generate(featureCardData.length, (index) {
-                  return FeatureCard(
-                    featureCardData: featureCardData[index],
-                    featureCardModel: null,
+                  return GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Coming Soon'),
+                            content: const Text('This feature is coming soon!'),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: FeatureCard(
+                      featureCardData: featureCardData[index],
+                      featureCardModel: null,
+                    ),
                   );
                 })),
             const SizedBox(height: 15),
@@ -120,24 +142,45 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 20),
             Row(
               children: [
-                Column(
-                  children: [
-                    CircleAvatar(
-                      radius: 40,
-                      child: Icon(Icons.add,
-                          size: 50,
-                          color: AppColors.primaryBlack.withOpacity(0.5)),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text(
-                      'Add ',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.primaryBlack,
+                GestureDetector(
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: const Text('Coming Soon'),
+                          content: const Text('This feature is coming soon!'),
+                          actions: <Widget>[
+                            TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        child: Icon(Icons.add,
+                            size: 50,
+                            color: AppColors.primaryBlack.withOpacity(0.5)),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 10),
+                      const Text(
+                        'Add ',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.primaryBlack,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(width: 20),
                 Expanded(
