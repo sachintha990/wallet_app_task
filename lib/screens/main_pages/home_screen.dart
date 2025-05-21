@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_app_task/data/favorite_item_data.dart';
 import 'package:wallet_app_task/data/featuer_card_data.dart';
 import 'package:wallet_app_task/utils/colors.dart';
+import 'package:wallet_app_task/widgets/favorite_item.dart';
 import 'package:wallet_app_task/widgets/feature_card.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+  });
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -49,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
               balance,
@@ -88,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     selectedCurrency = newValue!;
                   });
                 }),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             const Text(
               'Here are some things you can do',
               style: TextStyle(
@@ -97,7 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: AppColors.primaryGrey,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
@@ -108,6 +113,56 @@ class _HomeScreenState extends State<HomeScreen> {
                     featureCardModel: null,
                   );
                 })),
+            const SizedBox(height: 15),
+            const Text(
+              'Your favorite people',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: AppColors.primaryGrey,
+              ),
+            ),
+            const SizedBox(height: 20),
+            Row(
+              children: [
+                Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      child: Icon(Icons.add,
+                          size: 50,
+                          color: AppColors.primaryBlack.withOpacity(0.5)),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      'Add ',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.primaryBlack,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: SizedBox(
+                    height: 120,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: favoriteItemData.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return FavoriteItem(
+                          favoriteItemData: favoriteItemData[index],
+                        );
+                      },
+                    ),
+                  ),
+                )
+              ],
+            ),
           ],
         ),
       ),
