@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:wallet_app_task/data/currency_data.dart';
 import 'package:wallet_app_task/data/favorite_item_data.dart';
 import 'package:wallet_app_task/data/featuer_card_data.dart';
@@ -17,8 +18,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String selectedCurrency = 'LKR';
+  Map<String, double> currencyBalances = {
+    'LKR': 10000.00,
+    'USD': 85.00,
+    'EUR': 75.00,
+    'INR': 7000.00,
+  };
 
-  double balance = 10000.00;
+  double get balance => (currencyBalances[selectedCurrency]) ?? 0.0;
 
   final name = 'Ehi';
 
@@ -40,7 +47,25 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: const Icon(Icons.notifications_none,
                 color: AppColors.primaryGrey),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    title: const Text('Coming Soon'),
+                    content: const Text('This feature is coming soon!'),
+                    actions: <Widget>[
+                      TextButton(
+                        child: const Text('OK'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
             iconSize: 30,
           ),
         ],
@@ -52,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              balance.toStringAsFixed(2),
+              NumberFormat('#,##0.00').format(balance),
               style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
