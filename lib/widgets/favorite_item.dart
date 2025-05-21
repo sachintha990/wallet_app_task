@@ -29,7 +29,7 @@ class FavoriteItem extends StatelessWidget {
                     radius: 10,
                     backgroundColor: AppColors.primaryWhite,
                     child: Image.asset(
-                      favoriteItemData.country,
+                      favoriteItemData.imageUrl,
                       fit: BoxFit.cover,
                     ),
                   ),

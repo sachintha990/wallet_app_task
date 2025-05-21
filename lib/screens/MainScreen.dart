@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wallet_app_task/screens/main_pages/home_screen.dart';
 import 'package:wallet_app_task/screens/main_pages/profile_screen.dart';
-import 'package:wallet_app_task/screens/main_pages/setting_screen.dart';
+import 'package:wallet_app_task/screens/main_pages/more_screen.dart';
 import 'package:wallet_app_task/screens/main_pages/wallet_screen.dart';
 import 'package:wallet_app_task/utils/colors.dart';
 
@@ -14,14 +14,13 @@ class Mainscreen extends StatefulWidget {
 }
 
 class _MainscreenState extends State<Mainscreen> {
-  @override
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
     WalletScreen(),
     ProfileScreen(),
-    SettingScreen(),
+    MoreScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -93,7 +92,7 @@ class _MainscreenState extends State<Mainscreen> {
                 ),
                 semanticsLabel: 'My SVG Image',
               ),
-              label: 'Settings',
+              label: 'More',
             ),
           ],
           currentIndex: _selectedIndex,

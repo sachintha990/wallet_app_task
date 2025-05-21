@@ -22,13 +22,13 @@ final List<FavoriteItemData> favoriteItemData = [
   FavoriteItemData(
     id: '2',
     name: 'Jane Smith',
-    imageUrl: 'assets/images/user2.png',
-    country: 'Canada',
+    imageUrl: 'assets/images/USD.jpg',
+    country: 'USA',
   ),
   FavoriteItemData(
     id: '3',
     name: 'Alice Johnson',
-    imageUrl: 'assets/images/user3.png',
-    country: 'UK',
+    imageUrl: 'assets/images/INR.jpg',
+    country: 'India',
   ),
 ];
