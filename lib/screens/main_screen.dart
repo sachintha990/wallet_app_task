@@ -6,14 +6,14 @@ import 'package:wallet_app_task/screens/main_pages/more_screen.dart';
 import 'package:wallet_app_task/screens/main_pages/wallet_screen.dart';
 import 'package:wallet_app_task/utils/colors.dart';
 
-class Mainscreen extends StatefulWidget {
-  const Mainscreen({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<Mainscreen> createState() => _MainscreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainscreenState extends State<Mainscreen> {
+class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
