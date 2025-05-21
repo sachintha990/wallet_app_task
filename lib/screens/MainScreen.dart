@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:wallet_app_task/screens/main_pages/home_screen.dart';
 import 'package:wallet_app_task/screens/main_pages/profile_screen.dart';
-import 'package:wallet_app_task/screens/main_pages/setting_screen.dart';
+import 'package:wallet_app_task/screens/main_pages/more_screen.dart';
 import 'package:wallet_app_task/screens/main_pages/wallet_screen.dart';
 import 'package:wallet_app_task/utils/colors.dart';
 
@@ -14,14 +15,13 @@ class Mainscreen extends StatefulWidget {
 }
 
 class _MainscreenState extends State<Mainscreen> {
-  @override
   int _selectedIndex = 0;
 
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
     WalletScreen(),
     ProfileScreen(),
-    SettingScreen(),
+    MoreScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -33,12 +33,41 @@ class _MainscreenState extends State<Mainscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Coming Soon'),
+                content: const Text('This feature is coming soon!'),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('OK'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        child: SvgPicture.asset(
+          'assets/icons/radio-button-checked.svg',
+          height: 80,
+        ),
+      ),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(100),
         child: BottomNavigationBar(
+          backgroundColor: AppColors.primaryWhite,
+          elevation: 1,
           type: BottomNavigationBarType.shifting,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -93,7 +122,7 @@ class _MainscreenState extends State<Mainscreen> {
                 ),
                 semanticsLabel: 'My SVG Image',
               ),
-              label: 'Settings',
+              label: 'More',
             ),
           ],
           currentIndex: _selectedIndex,
@@ -102,6 +131,7 @@ class _MainscreenState extends State<Mainscreen> {
           onTap: _onItemTapped,
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

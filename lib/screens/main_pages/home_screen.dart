@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wallet_app_task/data/currency_data.dart';
 import 'package:wallet_app_task/data/favorite_item_data.dart';
 import 'package:wallet_app_task/data/featuer_card_data.dart';
 import 'package:wallet_app_task/utils/colors.dart';
@@ -17,21 +18,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String selectedCurrency = 'LKR';
 
-  final List<String> currencies = ['LKR', 'USD', 'EUR', 'INR'];
-  final Map<String, String> currencyFlags = {
-    'LKR': 'assets/images/LKR.png',
-    'USD': 'assets/images/USD.png',
-    'EUR': 'assets/images/EUR.png',
-    'INR': 'assets/images/INR.png',
-  };
-
-  final balance = '1,234.00';
+  double balance = 10000.00;
   final name = 'Ehi';
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryWhite,
       appBar: AppBar(
-        backgroundColor: AppColors.primaryWhite,
         elevation: 0,
         title: Text(
           'Hi $name',
@@ -46,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.notifications_none,
                 color: AppColors.primaryGrey),
             onPressed: () {},
+            iconSize: 30,
           ),
         ],
       ),
@@ -56,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              balance,
+              "$balance",
               style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -76,13 +71,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                       children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(100),
                           child: Image.asset(
                             currencyFlags[currency]!,
-                            width: 20,
                             height: 20,
                           ),
                         ),
+                        const SizedBox(width: 10),
                         Text(currency)
                       ],
                     ),

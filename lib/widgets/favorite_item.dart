@@ -17,9 +17,11 @@ class FavoriteItem extends StatelessWidget {
                 CircleAvatar(
                   radius: 45,
                   backgroundColor: AppColors.primaryGrey,
-                  child: Image.asset(
-                    favoriteItemData.imageUrl,
-                    fit: BoxFit.cover,
+                  child: ClipOval(
+                    child: Image.asset(
+                      favoriteItemData.imageUrl,
+                      height: 150,
+                    ),
                   ),
                 ),
                 Positioned(
@@ -28,9 +30,13 @@ class FavoriteItem extends StatelessWidget {
                   child: CircleAvatar(
                     radius: 10,
                     backgroundColor: AppColors.primaryWhite,
-                    child: Image.asset(
-                      favoriteItemData.country,
-                      fit: BoxFit.cover,
+                    child: ClipOval(
+                      child: Image.asset(
+                        favoriteItemData.countryUrl,
+                        fit: BoxFit.cover,
+                        width: 20,
+                        height: 20,
+                      ),
                     ),
                   ),
                 ),

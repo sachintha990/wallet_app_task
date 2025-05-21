@@ -19,7 +19,7 @@ class FeatureCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(featureCardData.icon, size: 40),
+          featureCardData.icon,
           const SizedBox(height: 10),
           Text(
             featureCardData.lable,
