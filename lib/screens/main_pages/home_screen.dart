@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   double balance = 10000.00;
   final name = 'Ehi';
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

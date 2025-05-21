@@ -32,12 +32,23 @@ class _MainscreenState extends State<Mainscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        child: SvgPicture.asset(
+          'assets/icons/radio-button-checked.svg',
+          height: 80,
+        ),
+      ),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(100),
         child: BottomNavigationBar(
+          backgroundColor: AppColors.primaryWhite,
+          elevation: 1,
           type: BottomNavigationBarType.shifting,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -101,6 +112,7 @@ class _MainscreenState extends State<Mainscreen> {
           onTap: _onItemTapped,
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
